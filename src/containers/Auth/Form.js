@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import Input from '../../components/UI/Input/Input';
 import classes from './Form.module.css';
+import Text from '../../components/UI/TextField/Text'
 
 class Form extends Component {
     state = {
@@ -65,7 +66,9 @@ class Form extends Component {
                 },
                 valid: false
             }
-        }
+        },
+        label: "UserName",
+        value: "User Name"
     }
 
     checkValidity(value, rules) {
@@ -110,6 +113,7 @@ class Form extends Component {
     } 
 
     render() {
+        // did mount lifecycle
         const formElementArray = [];
         for(let key in this.state.Form) {
             formElementArray.push({
@@ -118,7 +122,7 @@ class Form extends Component {
             });
         }
 
-        let form = (
+        const form = (
             <form onSubmit={this.submitHandler}>
                 {formElementArray.map(formElement => (
                     <Input 
@@ -134,10 +138,18 @@ class Form extends Component {
         );
 
         return(
-            <div className={classes.FormData}>
-                <h3>Sign Up</h3>
-                {form}
+            <div>
+                <div className={classes.FormData}>
+                    <h3>Sign Up</h3>
+                    {form}
+                </div>
+
+                <hr />
+                <Text 
+                    label={this.state.label} 
+                    value={this.state.value} />
             </div>
+            
         );
     }
 }
