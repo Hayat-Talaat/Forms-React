@@ -11,7 +11,13 @@ class Form extends Component {
                     type: 'text',
                     placeholder: 'Your Name'
                 },
-                value: ''
+                value: '',
+                validation: {
+                    required: true,
+                    minLength: 3,
+                    maxLength: 25
+                },
+                valid: false
             },
             email: {
                 elementType: 'input',
@@ -19,7 +25,11 @@ class Form extends Component {
                     type: 'email',
                     placeholder: 'Your E-mail'
                 },
-                value: ''
+                value: '',
+                validation: {
+                    required: true
+                },
+                valid: false
             },
             password: {
                 elementType: 'input',
@@ -27,7 +37,11 @@ class Form extends Component {
                     type: 'password',
                     placeholder: 'Your Password'
                 },
-                value: ''
+                value: '',
+                validation: {
+                    required: true
+                },
+                valid: false
             },
             gender: {
                 elementType: 'select',
@@ -45,21 +59,49 @@ class Form extends Component {
                     type: 'file',
                     accept: 'image/*'
                 },
-                value: ''
+                value: '',
+                validation: {
+                    required: true
+                },
+                valid: false
             }
         }
     }
 
+    checkValidity(value, rules) {
+        let isValid = true;
+
+        // Required
+        if(rules.required) {
+            isValid = value.trim() !== '' && isValid;
+        }
+
+        // Minimum Length
+        if(rules.minLength) {
+            isValid = value.length >= rules.minLength && isValid;
+        }
+
+        // Max Length
+        if(rules.maxLength) {
+            isValid = value.length <= rules.maxLength && isValid;
+        }
+
+        return isValid;
+    }
+
     inputChangedHandler = (event, inputIdentifier) => {
         const updatedForm = {
-            ...this.state.Form
+            ...this.state.Form // get name, email ...
         }
         const updatedFormElement = {
-            ...updatedForm[inputIdentifier]
+            ...updatedForm[inputIdentifier] // inputIdentifier : get the right side
         }
+        // Value
         updatedFormElement.value = event.target.value;
+        // Valid
+        updatedFormElement.valid = this.checkValidity(updatedFormElement.value, updatedFormElement.validation);
         updatedForm[inputIdentifier] = updatedFormElement
-
+        console.log(updatedFormElement);
         this.setState({Form:updatedForm});
     }
 
