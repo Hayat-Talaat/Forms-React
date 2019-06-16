@@ -7,9 +7,9 @@ function NavBar() {
             <header>
                 <div class="nav">
                     <ul>
-                        <li class="tutorials"><a class="active" href="#">Home</a></li>
-                        <li class="about"><a>Login</a></li>
-                        <li class="news"><a>SignUp</a></li>
+                        <li className="tutorials"><a class="active" href="#">Home</a></li>
+                        <li className="about"><a>Login</a></li>
+                        <li className="news"><a>SignUp</a></li>
                     </ul>
                 </div>
             </header>

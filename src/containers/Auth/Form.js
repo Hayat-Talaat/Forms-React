@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
 import Input from '../../components/UI/Input/Input';
-import test from './Form.module.css';
+import classes from './Form.module.css';
 
 class Form extends Component {
     state = {
-        submitForm: {
+        Form: {
             name: {
                 elementType: 'input',
                 elementConfig: {
@@ -39,7 +39,7 @@ class Form extends Component {
                 },
                 value: ''
             },
-            prfilePic: {
+            profilePic: {
                 elementType: 'input',
                 elementConfig: {
                     type: 'file',
@@ -50,20 +50,51 @@ class Form extends Component {
         }
     }
 
+    inputChangedHandler = (event, inputIdentifier) => {
+        const updatedForm = {
+            ...this.state.Form
+        }
+        const updatedFormElement = {
+            ...updatedForm[inputIdentifier]
+        }
+        updatedFormElement.value = event.target.value;
+        updatedForm[inputIdentifier] = updatedFormElement
+
+        this.setState({Form:updatedForm});
+    }
+
+    submitHandler = (event) => {
+        event.preventDefault();
+    } 
+
     render() {
+        const formElementArray = [];
+        for(let key in this.state.Form) {
+            formElementArray.push({
+                id: key,
+                config: this.state.Form[key] //given key
+            });
+        }
+
         let form = (
-            <form>
-                <Input className="Input" inputtype="input" type="text" name="name" placeholder="Your Name" />
-                <Input className="Input" inputtype="input" type="email" name="email" placeholder="Your Mail" />
-                <button>ORDER</button>
+            <form onSubmit={this.submitHandler}>
+                {formElementArray.map(formElement => (
+                    <Input 
+                        key={formElement.id}
+                        elementType={formElement.config.elementType}
+                        elementConfig={formElement.config.elementConfig}
+                        value={formElement.config.value} 
+                        changed={(event) => this.inputChangedHandler(event, formElement.id)}
+                    />
+                ))}
+                <button>Sign</button>
             </form>
         );
 
         return(
-            <div className="FormData">
-                <h3>Login</h3>
+            <div className={classes.FormData}>
+                <h3>Sign Up</h3>
                 {form}
-                <div className={test.Test}>test</div>
             </div>
         );
     }

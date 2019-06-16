@@ -2,7 +2,7 @@
     margin: 40px auto;
     width: 50%;
     text-align: center;
-    box-shadow: 0 2px 3px #e85a5d94;
+    box-shadow: 0 1px 3px #514f4fc2;
     border: 1px solid #eee;
     padding: 20px;
     box-sizing: border-box;
@@ -11,7 +11,7 @@
 }
 
 .FormData h3 {
-    color: #e85a5d
+    color: #2e2c2b
 }
 
 .Input {
@@ -24,7 +24,7 @@
     outline: 0;
     display: block;
     width: 100%;
-    margin: 20px auto;
+    margin: 20px auto !important;
     border-radius: 1.5px
 }
 .Input:focus {
@@ -33,10 +33,10 @@
 }
 form button {
     width: 100%;
-    background: #e85a5d;
+    background: #2e2c2b;
     color: #fff;
     padding: 10px;
-    border: 1px solid #e85a5d;
+    border: 1px solid #2e2c2b;
     border-radius: 3px;
     font-weight: 600;
 }
