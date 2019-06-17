@@ -14,7 +14,7 @@
 select.InputField {
     background: #fff;
     color: gray;
-    width: 65%
+    width: 63%
 }
 .InputField:focus {
     background: #ccc;

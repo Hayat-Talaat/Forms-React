@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Input from '../../components/UI/Input/Input';
 import classes from './Form.module.css';
 import TextField from '../../components/UI/Inputs/TextField';
 import Textarea from '../../components/UI/Inputs/Textarea';
@@ -29,8 +28,7 @@ class Form extends Component {
 
     changeHandler = value => {
         this.setState({
-            
-                UserName: { value }
+            UserName: { value }
         });
     }
 
@@ -38,7 +36,6 @@ class Form extends Component {
 
         return (
             <div>
-                
                 <form className={classes.Form}>
                     <TextField
                         label={this.state.UserName.label}
