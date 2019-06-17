@@ -12,11 +12,7 @@
     border-radius: 1.5px
 }
 
-.Label {
-    font-weight: 600;
-    margin-bottom: 10px;
-    display: block
-}
+
 
 .InputElement {
     border: 1px solid #ccc;

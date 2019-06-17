@@ -1,10 +1,12 @@
 import React from 'react';
+import './Inputs.css';
+
 
 const SelectBox = (props) => {
     return (
-        <div>
-            <label>{props.label}</label>
-            <select>
+        <div className="InputElements">
+            <label className="Label">{props.label}</label>
+            <select className="InputField">
                 {props.value.map(option => (
                     <option>
                         {option.value}

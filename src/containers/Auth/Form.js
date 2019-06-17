@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import Input from '../../components/UI/Input/Input';
 import classes from './Form.module.css';
 import TextField from '../../components/UI/Inputs/TextField';
@@ -50,8 +50,8 @@ class Form extends Component {
                 elementType: 'select',
                 elementConfig: {
                     options: [
-                        {value: "Male", displayValue: "Male"},
-                        {value: "Famele", displayValue: "Famele"}
+                        { value: "Male", displayValue: "Male" },
+                        { value: "Famele", displayValue: "Famele" }
                     ]
                 },
                 value: ''
@@ -83,11 +83,11 @@ class Form extends Component {
             Country: {
                 label: "Country",
                 options: [
-                    {value: "Egypt", displayValue: "Egypt"},
-                    {value: "USA", displayValue: "USA"},
+                    { value: "Egypt", displayValue: "Egypt" },
+                    { value: "USA", displayValue: "USA" },
                 ]
             }
-            
+
         }
     }
 
@@ -95,17 +95,17 @@ class Form extends Component {
         let isValid = true;
 
         // Required
-        if(rules.required) {
+        if (rules.required) {
             isValid = value.trim() !== '' && isValid;
         }
 
         // Minimum Length
-        if(rules.minLength) {
+        if (rules.minLength) {
             isValid = value.length >= rules.minLength && isValid;
         }
 
         // Max Length
-        if(rules.maxLength) {
+        if (rules.maxLength) {
             isValid = value.length <= rules.maxLength && isValid;
         }
 
@@ -125,12 +125,12 @@ class Form extends Component {
         updatedFormElement.valid = this.checkValidity(updatedFormElement.value, updatedFormElement.validation);
         updatedForm[inputIdentifier] = updatedFormElement
         console.log(updatedFormElement);
-        this.setState({Form:updatedForm});
+        this.setState({ Form: updatedForm });
     }
 
     submitHandler = (event) => {
         event.preventDefault();
-    } 
+    }
 
     changeHandler = value => {
         this.setState({
@@ -143,7 +143,7 @@ class Form extends Component {
     render() {
         // did mount lifecycle
         const formElementArray = [];
-        for(let key in this.state.Form) {
+        for (let key in this.state.Form) {
             formElementArray.push({
                 id: key,
                 config: this.state.Form[key] //given key
@@ -153,11 +153,11 @@ class Form extends Component {
         const form = (
             <form onSubmit={this.submitHandler}>
                 {formElementArray.map(formElement => (
-                    <Input 
+                    <Input
                         key={formElement.id}
                         elementType={formElement.config.elementType}
                         elementConfig={formElement.config.elementConfig}
-                        value={formElement.config.value} 
+                        value={formElement.config.value}
                         changed={(event) => this.inputChangedHandler(event, formElement.id)}
                     />
                 ))}
@@ -165,7 +165,7 @@ class Form extends Component {
             </form>
         );
 
-        return(
+        return (
             <div>
                 <div className={classes.FormData}>
                     <h3>Sign Up</h3>
@@ -173,22 +173,25 @@ class Form extends Component {
                 </div>
 
                 <hr />
-                <TextField 
-                    label={this.state.newForm.UserName.label} 
-                    value={this.state.newForm.UserName.value} 
-                    placeholder={this.state.newForm.UserName.placeholder}
-                    changed={this.changeHandler}
-                />
-                <Textarea
-                    label={this.state.newForm.Message.label} 
-                    placeholder={this.state.newForm.Message.placeholder}
-                />
-                <SelectBox 
-                    label={this.state.newForm.Country.label}
-                    value={this.state.newForm.Country.options}
-                />
+                <form className={classes.Form}>
+                    <TextField
+                        label={this.state.newForm.UserName.label}
+                        value={this.state.newForm.UserName.value}
+                        placeholder={this.state.newForm.UserName.placeholder}
+                        changed={this.changeHandler}
+                    />
+                    <Textarea
+                        label={this.state.newForm.Message.label}
+                        placeholder={this.state.newForm.Message.placeholder}
+                    />
+                    <SelectBox
+                        label={this.state.newForm.Country.label}
+                        value={this.state.newForm.Country.options}
+                    />
+                </form>
+
             </div>
-            
+
         );
     }
 }

@@ -1,0 +1,29 @@
+.Label {
+    color: gray;
+    width: 30%;
+    display: inline-block;
+    text-align: left;
+}
+
+.InputField {
+    width: 60%;
+    padding: 8px;
+    border: 1px solid #fff;
+    border-radius: 2px;
+}
+select.InputField {
+    background: #fff;
+    color: gray;
+    width: 65%
+}
+.InputField:focus {
+    background: #ccc;
+    border-color: #ccc;
+    outline: none
+}
+.InputElements {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
