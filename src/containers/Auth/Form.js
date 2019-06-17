@@ -1,42 +1,29 @@
 import React, { Component } from 'react';
-
+import {isRequired} from './Validator/isRequired';
+import {isPassword} from './Validator/isPassword';
+import {isEmail} from './Validator/isEmail';
+ 
 class Form extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            UserName: {
-                label: "UserName",
-                placeholder: 'Username',
-                value: "User Name"
-            },
-            Email: {
-                label: "Email",
-                placeholder: 'Email',
-                value: "Email"
-            },
-            Password: {
-                label: "Password",
-                placeholder: 'Password',
-                value: "Password"
-            },
-            RePassword: {
-                label: "Re-Password",
-                placeholder: 'Re-Password',
-                value: "Re-Password"
-            },
-            Message: {
-                label: "Message",
-                placeholder: 'Your Message',
-                value: "Message"
-            },
-            Gender: {
-                label: "Gender",
-                options: [
-                    { value: "Female", displayValue: "Female" },
-                    { value: "Male", displayValue: "Male" },
-                ]
-            }
+    init = (form) => {
+        this.state = form;
+    }
+
+    submitionHandler = event => {
+        event.preventDefault();
+        // isRequired 
+        if (!isRequired(this.state.email) || !isRequired(this.state.password)) {
+            alert("Empty Inputs");
         }
+        
+        // isEmail
+        if (!isEmail(this.state.email)) {
+            alert("You have entered an invalid email address!");
+        } 
+
+        // isPassword
+        if (!isPassword(this.state.password)) {
+            alert('faild, try another...')
+        } 
     }
 
     changeHandler = (name, value) => {
@@ -47,8 +34,6 @@ class Form extends Component {
           }
         });
     }
-
-    
 }
 
 export default Form;
