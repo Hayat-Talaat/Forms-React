@@ -69,7 +69,6 @@ class Form extends Component {
         },
         newForm: {
             UserName: {
-                id: 'vas22',
                 label: "UserName",
                 placeholder: 'Username',
                 value: "User Name"
