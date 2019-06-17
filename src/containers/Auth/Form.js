@@ -7,34 +7,30 @@ import SelectBox from '../../components/UI/Inputs/SelectBox';
 
 class Form extends Component {
     state = {
-        newForm: {
-            UserName: {
-                label: "UserName",
-                placeholder: 'Username',
-                value: "User Name"
-            },
-            Message: {
-                label: "Message",
-                placeholder: 'Your Message',
-                value: "Message"
-            },
-            Country: {
-                label: "Country",
-                options: [
-                    { value: "Egypt", displayValue: "Egypt" },
-                    { value: "USA", displayValue: "USA" },
-                ]
-            }
-
+        UserName: {
+            label: "UserName",
+            placeholder: 'Username',
+            value: "User Name"
+        },
+        Message: {
+            label: "Message",
+            placeholder: 'Your Message',
+            value: "Message"
+        },
+        Country: {
+            label: "Country",
+            options: [
+                { value: "Egypt", displayValue: "Egypt" },
+                { value: "USA", displayValue: "USA" },
+            ]
         }
     }
 
 
     changeHandler = value => {
         this.setState({
-            newForm: {
+            
                 UserName: { value }
-            }
         });
     }
 
@@ -45,18 +41,18 @@ class Form extends Component {
                 
                 <form className={classes.Form}>
                     <TextField
-                        label={this.state.newForm.UserName.label}
-                        value={this.state.newForm.UserName.value}
-                        placeholder={this.state.newForm.UserName.placeholder}
+                        label={this.state.UserName.label}
+                        value={this.state.UserName.value}
+                        placeholder={this.state.UserName.placeholder}
                         changed={this.changeHandler}
                     />
                     <Textarea
-                        label={this.state.newForm.Message.label}
-                        placeholder={this.state.newForm.Message.placeholder}
+                        label={this.state.Message.label}
+                        placeholder={this.state.Message.placeholder}
                     />
                     <SelectBox
-                        label={this.state.newForm.Country.label}
-                        value={this.state.newForm.Country.options}
+                        label={this.state.Country.label}
+                        value={this.state.Country.options}
                     />
                 </form>
 
