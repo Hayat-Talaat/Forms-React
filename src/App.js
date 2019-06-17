@@ -1,13 +1,16 @@
 import React from 'react';
 import './App.css';
 import NavBar from './components/Navigation/NavBar';
-import Form from './containers/Auth/Form';
+import Login from './containers/Auth/Login/Login';
+import SignUp from './containers/Auth/SignUp/SignUp';
 
 function App() {
   return (
     <div className="App">
       <NavBar></NavBar>
-      <Form></Form>
+      <Login></Login>
+      <hr />
+      <SignUp></SignUp>
     </div>
   );
 }
