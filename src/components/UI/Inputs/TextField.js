@@ -7,7 +7,7 @@ const TextField = (props) => {
             <input 
                 type="text" 
                 placeholder={props.placeholder}
-                onChange={props.changed}
+                onChange={e => props.changed(e.target.value)}
             />
         </div>
     );
