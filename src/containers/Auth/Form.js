@@ -26,9 +26,16 @@ class Form extends Component {
     }
 
 
-    changeHandler = value => {
+    changeHandler = (name, value) => {
         this.setState({
+<<<<<<< HEAD
             UserName: { value }
+=======
+          [name]: {
+              ...this.state[name],
+              value
+          }
+>>>>>>> 1424e9f30611b93cfd1fe71b7c215ffebed9034f
         });
     }
 
@@ -41,7 +48,7 @@ class Form extends Component {
                         label={this.state.UserName.label}
                         value={this.state.UserName.value}
                         placeholder={this.state.UserName.placeholder}
-                        changed={this.changeHandler}
+                        changed={value => this.changeHandler('UserName', value)}
                     />
                     <Textarea
                         label={this.state.Message.label}
