@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import Input from '../../components/UI/Input/Input';
 import classes from './Form.module.css';
-import Text from '../../components/UI/TextField/Text'
+import TextField from '../../components/UI/Inputs/TextField'
 
 class Form extends Component {
     state = {
@@ -67,8 +67,15 @@ class Form extends Component {
                 valid: false
             }
         },
-        label: "UserName",
-        value: "User Name"
+        newForm: {
+            UserName: {
+                id: 'vas22',
+                label: "UserName",
+                placeholder: 'Username',
+                value: "User Name"
+            }
+            
+        }
     }
 
     checkValidity(value, rules) {
@@ -112,6 +119,17 @@ class Form extends Component {
         event.preventDefault();
     } 
 
+    changeHandler = (event) => {
+        this.setState({
+            newForm: {
+                UserName: {
+                    value: event.target.value
+                }
+                
+            }
+        });
+    }
+
     render() {
         // did mount lifecycle
         const formElementArray = [];
@@ -145,9 +163,12 @@ class Form extends Component {
                 </div>
 
                 <hr />
-                <Text 
-                    label={this.state.label} 
-                    value={this.state.value} />
+                <TextField 
+                    label={this.state.newForm.UserName.label} 
+                    value={this.state.newForm.UserName.value} 
+                    placeholder={this.state.newForm.UserName.placeholder}
+                    changed={this.changeHandler}
+                />
             </div>
             
         );
