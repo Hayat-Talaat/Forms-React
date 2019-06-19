@@ -2,45 +2,46 @@ import React from 'react';
 import Form from '../Form';
 import classes from '../Form.module.css';
 import TextField from '../../../components/UI/Inputs/TextField';
+import {isRequired} from '../Validator/isRequired';
+import {isPassword} from '../Validator/isPassword';
+import {isEmail} from '../Validator/isEmail';
 
 class Login extends Form {
     constructor(props) {
         super(props);
 
         this.init({
-            UserName: {
-                label: "UserName",
-                placeholder: 'Username',
-                value: "User Name"
-            },
             Email: {
-                label: "Email",
+                label: 'Email',
                 placeholder: 'Email',
-                value: "Email"
+                type: 'email',
+                value: ''
             },
             Password: {
-                label: "Password",
+                label: 'Password',
                 placeholder: 'Password',
-                value: "Password"
-            },
-            RePassword: {
-                label: "Re-Password",
-                placeholder: 'Re-Password',
-                value: "Re-Password"
-            },
-            Message: {
-                label: "Message",
-                placeholder: 'Your Message',
-                value: "Message"
-            },
-            Gender: {
-                label: "Gender",
-                options: [
-                    { value: "Female", displayValue: "Female" },
-                    { value: "Male", displayValue: "Male" }
-                ]
+                type: 'password',
+                value: ''
             }
         })
+    }
+
+    submitionHandler = event => {
+        event.preventDefault();
+        // isRequired 
+        if (!isRequired(this.state.Email.value) || !isRequired(this.state.Password.value)) {
+            alert("Empty Inputs");
+        }
+        
+        // isEmail
+        if (!isEmail(this.state.Email.value)) {
+            alert("You have entered an invalid email address!");
+        } 
+
+        // isPassword
+        if (!isPassword(this.state.Password.value)) {
+            alert('faild, try another password')
+        } 
     }
 
     render() {
@@ -50,12 +51,14 @@ class Login extends Form {
                     <TextField
                         label={this.state.Email.label}
                         value={this.state.Email.value}
+                        type={this.state.Email.type}
                         placeholder={this.state.Email.placeholder}
                         changed={value => this.changeHandler('Email', value)}
                     />
                     <TextField
                         label={this.state.Password.label}
                         value={this.state.Password.value}
+                        type={this.state.Password.type}
                         placeholder={this.state.Password.placeholder}
                         changed={value => this.changeHandler('Password', value)}
                     />

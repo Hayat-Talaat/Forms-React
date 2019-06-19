@@ -7,7 +7,7 @@ const TextField = (props) => {
             <label className="Label">{props.label}</label>
             <input 
                 className="InputField"
-                type="text" 
+                type={props.type}
                 placeholder={props.placeholder}
                 onChange={e => props.changed(e.target.value)}
             />

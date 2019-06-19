@@ -2,12 +2,47 @@ import React from 'react';
 import Form from '../Form';
 import classes from '../Form.module.css';
 import TextField from '../../../components/UI/Inputs/TextField';
-import Textarea from '../../../components/UI/Inputs/Textarea';
-import SelectBox from '../../../components/UI/Inputs/SelectBox';
+import {isRequired} from '../Validator/isRequired';
+import {isPassword} from '../Validator/isPassword';
+import {isEmail} from '../Validator/isEmail';
 
 class Login extends Form {
     constructor(props) {
         super(props);
+        this.init({
+            UserName: {
+                label: "UserName",
+                placeholder: 'Username',
+                value: "User Name"
+            },
+            Email: {
+                label: "Email",
+                placeholder: 'Email',
+                value: "Email"
+            },
+            Password: {
+                label: "Password",
+                placeholder: 'Password',
+                value: "Password"
+            },
+            RePassword: {
+                label: "Re-Password",
+                placeholder: 'Re-Password',
+                value: "Re-Password"
+            },
+            Message: {
+                label: "Message",
+                placeholder: 'Your Message',
+                value: "Message"
+            },
+            Gender: {
+                label: "Gender",
+                options: [
+                    { value: "Female", displayValue: "Female" },
+                    { value: "Male", displayValue: "Male" }
+                ]
+            }
+        })
     }
 
     render() {
