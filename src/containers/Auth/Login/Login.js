@@ -15,13 +15,23 @@ class Login extends Form {
                 label: 'Email',
                 placeholder: 'Email',
                 type: 'email',
-                value: ''
+                value: '',
+                validator: [
+                    isRequired
+                ],
+                isValid: false,
+                message: ''
             },
             Password: {
                 label: 'Password',
                 placeholder: 'Password',
                 type: 'password',
-                value: ''
+                value: '',
+                validator: [
+                    isRequired
+                ],
+                isValid: false,
+                message: ''
             }
         })
     }
@@ -39,12 +49,22 @@ class Login extends Form {
         } 
 
         // isPassword
-        if (!isPassword(this.state.Password.value)) {
+        if (isPassword(this.state.Password.value)) {
             alert('faild, try another password')
         } 
     }
 
+    
     render() {
+        
+        const inputClasses = [classes.InputField],
+            emailValid = this.state.Email.isValid,
+            passValid = this.state.Email.isValid;
+
+        if (emailValid || passValid == false) {
+            inputClasses.push(classes.Invalid);
+        }
+        
         return (
             <div>
                 <form className={classes.Form}>
@@ -54,6 +74,7 @@ class Login extends Form {
                         type={this.state.Email.type}
                         placeholder={this.state.Email.placeholder}
                         changed={value => this.changeHandler('Email', value)}
+                        ggfd={inputClasses.join(' ')}
                     />
                     <TextField
                         label={this.state.Password.label}
@@ -61,9 +82,11 @@ class Login extends Form {
                         type={this.state.Password.type}
                         placeholder={this.state.Password.placeholder}
                         changed={value => this.changeHandler('Password', value)}
+                        ggfd={inputClasses.join(' ')}
                     />
-                    <button onClick={this.submitionHandler}>Login</button>
+                    <button onClick={this.checkValidity}>Login</button>
                 </form>
+                
             </div>
         );
     }

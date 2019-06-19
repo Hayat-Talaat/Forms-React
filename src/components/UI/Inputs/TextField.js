@@ -1,12 +1,13 @@
 import React from 'react';
-import './Inputs.css';
+import './Inputs.module.css';
+import classes from './Inputs.module.css';
 
 const TextField = (props) => {
     return (
-        <div className="InputElements">
-            <label className="Label">{props.label}</label>
+        <div className={classes.InputElements}>
+            <label className={classes.Label}>{props.label}</label>
             <input 
-                className="InputField"
+                className={props.ggfd}
                 type={props.type}
                 placeholder={props.placeholder}
                 onChange={e => props.changed(e.target.value)}
