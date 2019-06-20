@@ -3,7 +3,15 @@ export const isEmail = value => {
     return RegExp.test(value);
 }
 
-export const isRequired = value => !!value;
+export const isRequired = (message = "This field is required.") => {
+    return value => {
+        if (value) {
+            return false;
+        }
+
+        return message;
+    }
+};
 
 
 export const isPassword = value => {

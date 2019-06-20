@@ -2,16 +2,27 @@ import React from 'react';
 import './Inputs.module.css';
 import classes from './Inputs.module.css';
 
-const TextField = (props) => {
+const TextField = props => {
+    const {
+        type,
+        label,
+        placeholder,
+        changed,
+        message,
+        isValid,
+    } = props;
+
     return (
         <div className={classes.InputElements}>
-            <label className={classes.Label}>{props.label}</label>
+            <label className={classes.Label}>{label}</label>
             <input 
-                className={props.inputClass}
-                type={props.type}
-                placeholder={props.placeholder}
-                onChange={e => props.changed(e.target.value)}
+                className={isValid ? '' : classes.error}
+                type={type}
+                placeholder={placeholder}
+                onChange={e => changed(e.target.value)}
             />
+
+            {message}
         </div>
     );
 }

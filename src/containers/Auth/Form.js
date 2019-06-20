@@ -29,40 +29,17 @@ class Form extends Component {
 
         for(let field in formElement) {
             if(formElement.hasOwnProperty(field)) {
-                var value = formElement[field];
-                const isValid = value.validator.map(item => (
-                    item()
-                ))
-                
-                if (value.isValid) {
-                    value.message = ''
-                }
+                var element = formElement[field];
+                const isValid = element.validators.map(validator => {
+                    const validationResult = validator(element.value);
 
-
-                // for(let x in isValid) {
-                //     console.log(x);
-                //     if (x == 0){
-                //         alert("test")
-                //     }
-                // }
-
-
-                // const found = isValid.find(el => {
-                //     el = false > 1
-                // });
-                // console.log(found);
-                
-
-                // const found = isValid.some(function(el){
-                //     return el = false;
-                // });
-                // console.log(found);
-
-                // if(isValid.includes(false)) {
-                //     alert("test test");
-                // }
-               
+                    element.isValid = !validationResult;
+                    element.message = validationResult || '';
+                });
             }
+            
+            
+            this.setState(formElement);
             
         }
     }
