@@ -13,27 +13,57 @@ class Login extends Form {
             UserName: {
                 label: "UserName",
                 placeholder: 'Username',
-                value: "User Name"
+                value: '',
+                validator: [
+                    isRequired
+                ],
+                isValid: true,
+                toched: false,
+                message: ''
             },
             Email: {
                 label: "Email",
                 placeholder: 'Email',
-                value: "Email"
+                value: '',
+                validator: [
+                    isRequired
+                ],
+                isValid: true,
+                toched: false,
+                message: ''
             },
             Password: {
                 label: "Password",
                 placeholder: 'Password',
-                value: "Password"
+                value: '',
+                validator: [
+                    isRequired
+                ],
+                isValid: true,
+                toched: false,
+                message: ''
             },
             RePassword: {
                 label: "Re-Password",
                 placeholder: 'Re-Password',
-                value: "Re-Password"
+                value: '',
+                validator: [
+                    isRequired
+                ],
+                isValid: true,
+                toched: false,
+                message: ''
             },
             Message: {
                 label: "Message",
                 placeholder: 'Your Message',
-                value: "Message"
+                value: '',
+                validator: [
+                    isRequired
+                ],
+                isValid: true,
+                toched: false,
+                message: ''
             },
             Gender: {
                 label: "Gender",

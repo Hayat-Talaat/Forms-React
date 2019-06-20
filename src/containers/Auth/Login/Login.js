@@ -2,9 +2,8 @@ import React from 'react';
 import Form from '../Form';
 import classes from '../Form.module.css';
 import TextField from '../../../components/UI/Inputs/TextField';
-import {isRequired} from '../Validator/isRequired';
-import {isPassword} from '../Validator/isPassword';
-import {isEmail} from '../Validator/isEmail';
+import {isRequired, isEmail, isPassword} from '../Validators/Validators';
+
 
 class Login extends Form {
     constructor(props) {
@@ -19,8 +18,9 @@ class Login extends Form {
                 validator: [
                     isRequired
                 ],
-                isValid: false,
-                message: ''
+                isValid: true,
+                toched: false,
+                message: 'You have entered an invalid email address!'
             },
             Password: {
                 label: 'Password',
@@ -31,26 +31,27 @@ class Login extends Form {
                     isRequired
                 ],
                 isValid: false,
-                message: ''
+                toched: false,
+                message: 'faild, try another password'
             }
         })
     }
 
     submitionHandler = event => {
         event.preventDefault();
-        // isRequired 
+        //isRequired
         if (!isRequired(this.state.Email.value) || !isRequired(this.state.Password.value)) {
             alert("Empty Inputs");
         }
         
         // isEmail
         if (!isEmail(this.state.Email.value)) {
-            alert("You have entered an invalid email address!");
+            alert(this.state.Email.message);
         } 
 
         // isPassword
         if (isPassword(this.state.Password.value)) {
-            alert('faild, try another password')
+            alert(this.state.Password.message)
         } 
     }
 
@@ -59,12 +60,12 @@ class Login extends Form {
         
         const inputClasses = [classes.InputField],
             emailValid = this.state.Email.isValid,
-            passValid = this.state.Email.isValid;
+            passValid = this.state.Password.isValid;
 
-        if (emailValid || passValid == false) {
-            inputClasses.push(classes.Invalid);
+        if (emailValid && passValid == false) {
+            inputClasses.push(classes.Invalid)
         }
-        
+
         return (
             <div>
                 <form className={classes.Form}>
@@ -74,7 +75,7 @@ class Login extends Form {
                         type={this.state.Email.type}
                         placeholder={this.state.Email.placeholder}
                         changed={value => this.changeHandler('Email', value)}
-                        ggfd={inputClasses.join(' ')}
+                        inputClass={inputClasses.join(' ')}
                     />
                     <TextField
                         label={this.state.Password.label}
@@ -82,7 +83,7 @@ class Login extends Form {
                         type={this.state.Password.type}
                         placeholder={this.state.Password.placeholder}
                         changed={value => this.changeHandler('Password', value)}
-                        ggfd={inputClasses.join(' ')}
+                        inputClass={inputClasses.join(' ')}
                     />
                     <button onClick={this.checkValidity}>Login</button>
                 </form>
