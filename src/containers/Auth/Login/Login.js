@@ -2,7 +2,7 @@ import React from 'react';
 import Form from '../Form';
 import classes from '../Form.module.css';
 import TextField from '../../../components/UI/Inputs/TextField';
-import { isRequired, isEmail, isPassword } from '../Validators/Validators';
+import { isRequired, isEmail, isPassword } from '../../Services/Validators';
 
 
 //form { isValid, submitted, fields {}}
@@ -60,7 +60,7 @@ class Login extends Form {
 
     render() {
         return (
-            <div>
+            <div className="login">
                 <form className={classes.Form}>
                     <TextField
                         changed={value => this.changeHandler('Email', value)}

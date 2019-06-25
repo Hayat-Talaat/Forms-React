@@ -1,16 +1,27 @@
-import React from 'react';
+import React, {Component} from 'react';
 import './App.css';
 import NavBar from './components/Navigation/NavBar';
-import Login from './containers/Auth/Login/Login';
+import Router from './router';
+import Footer from './components/Footer/Footer';
 
-function App() {
-  return (
-    <div className="App">
-      <NavBar></NavBar>
-      <Login></Login>
-      <hr />
-    </div>
-  );
+class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      
+    }
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <NavBar />
+        <Router />
+        <Footer />
+      </div>
+    )
+  }
+
 }
 
 export default App;
