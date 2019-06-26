@@ -10,14 +10,15 @@ class Routes extends Component {
         }
     }
 
+    
     componentDidMount(props) {
         this.setState({
-            activeComponent: this.search(window.location.pathname)
+            activeComponent: this.getActiveComponent()
         });
     }
-    search = (nameKey) => {
+    getActiveComponent = () => {
         for (let i = 0; i < routes.length; i++) {
-            if (routes[i].path === nameKey) {
+            if (routes[i].path === window.location.pathname) {
                 return routes[i].Component;
             } 
         }
