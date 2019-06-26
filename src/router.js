@@ -40,9 +40,6 @@ class Routes extends Component {
         return (
             <>
                 <NavBar></NavBar>
-                <button onClick={this.eventListenerHandler}>test</button>
-                <a href="/home">homepage</a>
-                <a href="/contact">contact</a>
                 {this.search(currentPathname)}
             </>
         );
