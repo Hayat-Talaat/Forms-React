@@ -5,12 +5,16 @@ import NavBar from './components/Navigation/NavBar'
 class Routes extends Component {
     constructor(props) {
         super(props);
+        this.state = {
+            activeComponent: errorRoute.Component
+        }
     }
 
     componentDidMount(props) {
+        this.setState({
+            activeComponent: this.search(window.location.pathname)
+        });
     }
-
-    // Search
     search = (nameKey) => {
         for (let i = 0; i < routes.length; i++) {
             if (routes[i].path === nameKey) {
@@ -20,27 +24,12 @@ class Routes extends Component {
         return errorRoute.Component;
     }
 
-    // Add Event listener
-    eventListenerHandler = (e) => {
-        e.preventDefault();
-        let Anchors = document.getElementsByTagName('a');
-        for (let i = 0; i < Anchors.length ; i++) {
-            Anchors[i].addEventListener("click", 
-                function (event) {
-                    event.preventDefault();
-                    window.location.pathname = this.href;
-                }, 
-                false);
-        }
-    }
-
 
     render() {
-        let currentPathname = window.location.pathname;
         return (
             <>
                 <NavBar></NavBar>
-                {this.search(currentPathname)}
+                {this.state.activeComponent}
             </>
         );
 
