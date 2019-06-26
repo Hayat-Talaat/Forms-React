@@ -29,7 +29,6 @@ class Routes extends Component {
                 function (event) {
                     event.preventDefault();
                     window.location.pathname = this.href;
-                    this.href.addClass('test');
                 }, 
                 false);
         }
