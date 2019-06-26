@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import routes, {errorRoute} from './routes';
 import NavBar from './components/Navigation/NavBar'
 
-class Routes extends Component {
+class Router extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -11,7 +11,7 @@ class Routes extends Component {
     }
 
     
-    componentDidMount(props) {
+    componentDidMount(prevProps) {
         this.setState({
             activeComponent: this.getActiveComponent()
         });
@@ -42,4 +42,4 @@ class Routes extends Component {
 
 }
 
-export default Routes;
+export default Router;
