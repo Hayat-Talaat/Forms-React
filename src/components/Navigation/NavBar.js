@@ -7,11 +7,10 @@ function NavBar() {
             <header>
                 <div className="nav">
                     <ul>
-                        <li className="tutorials"><a className="active">Home</a></li>
+                        <li className="tutorials"><a href='/home' className="active">Home</a></li>
+                        <li className="news"><a href='/contact'>Contact Us</a></li>
+                        <li className="news"><a href='/about'>About Us</a></li>
                         <li className="about"><a>Login</a></li>
-                        <li className="news"><a>SignUp</a></li>
-                        <li className="news"><a>Contact Us</a></li>
-                        <li className="news"><a>About Us</a></li>
                     </ul>
                 </div>
             </header>
