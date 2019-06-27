@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import routes, {errorRoute} from './routes';
-import NavBar from './components/Navigation/NavBar'
+import NavBar from './components/Navigation/NavBar';
+import Events from './containers/EventSystem/Event';
+
 
 class Router extends Component {
     constructor(props) {
@@ -12,10 +14,15 @@ class Router extends Component {
 
     
     componentDidMount(prevProps) {
-        this.setState({
-            activeComponent: this.getActiveComponent()
+        
+
+        Events.on('changeRoute', () => {
+            this.setState({
+                activeComponent: this.getActiveComponent()
+            });
         });
     }
+
     getActiveComponent = () => {
         for (let i = 0; i < routes.length; i++) {
             if (routes[i].path === window.location.pathname) {
@@ -24,6 +31,8 @@ class Router extends Component {
         }
         return errorRoute.Component;
     }
+
+    
 
 
     render() {
