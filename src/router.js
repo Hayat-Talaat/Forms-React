@@ -14,7 +14,6 @@ class Router extends Component {
 
     
     componentDidMount(prevProps) {
-        
 
         Events.on('changeRoute', () => {
             this.setState({

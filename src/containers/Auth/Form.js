@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import {isRequired, isEmail, isPassword} from './Validators/Validators';
 
 
  
@@ -12,21 +11,7 @@ class Form extends Component {
         event.preventDefault();
         const formElement = this.state;
 
-        //isRequired
-        // if (!isRequired(this.state.Email.value) || !isRequired(this.state.Password.value)) {
-        //     alert("Empty Inputs");
-        // }
         
-        // // isEmail
-        // if (!isEmail(this.state.Email.value)) {
-        //     alert(this.state.Email.message);
-        // } 
-
-        // // isPassword
-        // if (isPassword(this.state.Password.value)) {
-        //     alert(this.state.Password.message)
-        // } 
-
         for(let field in formElement) {
             if(formElement.hasOwnProperty(field)) {
                 var element = formElement[field];
